@@ -599,7 +599,7 @@ default:
         <h3>
         An example - A simple Netcat-like tool
         </h3>
-        <table style='margin-top: 10px;' class='build'>
+        <table style='margin-top: 10px;' class=''>
           <tr>
             <td style="border: 0">
               <pre class="prettyprint" style='margin-top: 0px; margin-bottom: 0px;'>
@@ -680,13 +680,13 @@ func monkey(r io.Reader, to io.Writer, bufSize int) {
         <h3>
         Communication
         </h3>
-        <ul class="build">
+        <ul class="">
           <li>
 			Goroutines are not quite useful if they can't communicate with each other.
           </li>
           <li>
 			But communicating by sharing memory has a lot of well-known drawbacks.
-		    <ul class="build">
+		    <ul class="">
 		    <li>
 		    Lock based solutions don't compose.		  
 		    </li>
@@ -711,10 +711,10 @@ func monkey(r io.Reader, to io.Writer, bufSize int) {
         <h3>
         Channels
         </h3>
-        <ul class="build">
+        <ul class="">
           <li>
 			Inspired on Tony Hoare's ideas of concurrency in CSP.
-		    <ul class="build">
+		    <ul class="">
 		    <li>
 			Rendezvous model.
 		    </li>
@@ -728,7 +728,7 @@ func monkey(r io.Reader, to io.Writer, bufSize int) {
 		  </li>
           <li>
 			Two main use cases: 
-			<ul class="build">
+			<ul class="">
 		    <li>
 			Communication.
 		    </li>
@@ -744,7 +744,7 @@ func monkey(r io.Reader, to io.Writer, bufSize int) {
         <h3>
         Channels
         </h3>
-        <ul class="build">
+        <ul class="">
           <li>
           	Channels are reference types, so they are created using make (instead of new) 
         <pre class="prettyprint" style="margin-top: 10px; margin-bottom: 10px;">
@@ -780,7 +780,7 @@ func monkey(r io.Reader, to io.Writer, bufSize int) {
         <h3>
         Channels
         </h3>
-        <ul class="build">
+        <ul class="">
           <li>
     		Channels can be closed to indicate that there are no more messages.
         <pre class="prettyprint" >
@@ -810,7 +810,7 @@ func monkey(r io.Reader, to io.Writer, bufSize int) {
 		<p>
 			Reading from multiple channels: Select
 		</p>
-		<ul class='build'>
+		<ul class=''>
 		<li>
 		    A "select" statement chooses which of a set of possible communications will proceed.
 		</li>
@@ -820,7 +820,7 @@ func monkey(r io.Reader, to io.Writer, bufSize int) {
 		</ul>
         <table style="margin-top: 0px;">
         <tr>
-          <td style="border: 0px" class="build">
+          <td style="border: 0px" class="">
             <pre class="prettyprint" style="margin-top: 0px;">
 <code>
 select {
@@ -840,7 +840,7 @@ default:
             </pre>
           </td>
           <td style="border: 0px">
-            <ul class="build">
+            <ul class="">
             <li>
             All the channel expressions are evaluated.
             </li>
@@ -866,7 +866,7 @@ default:
         <h3>
         Channels: Some idioms
         </h3>
-        <ul class="build">
+        <ul class="">
         <li>
         <p>
           Generators à la Python
@@ -899,10 +899,10 @@ func main() {
       </article>
 
       <article class='smaller'>
-        <h3 class='build'>
+        <h3 class=''>
 	  Some thoughts on concurrency and parallelism
         </h3>
-	  <ul class='build'>
+	  <ul class=''>
 	  <li>
 		  Concurrency is not parallelism
 	  </li>
@@ -947,14 +947,14 @@ func main() {
       <article class="cols2 wider">
 
       <h3>What is Memcached?</h3>
-      <ul class="build left">
+      <ul class="left">
           <li>Client server memory object cache</li>
           <li>Off process key/value map with extra features</li>
           <li>Server works over tcp streams</li>
           <li>Protocol is line and byte oriented (mixed)</li>
           <li>Roles are classic client/server</li>
       </ul>
-      <ul class="build right">
+      <ul class="right">
           <li>Requests from different clients operate on the same map</li>
           <li>Keys are ASCII strings</li>
           <li>Values are raw bytes</li>
@@ -967,14 +967,14 @@ func main() {
 
       <article class="wider cols2">
           <h3>Memcached stock implementation </h3>
-          <ul class="build left">
+          <ul class="left">
               <li>Written in C</li>
               <li>The core is around 9000 SLOC</li>
               <li>All decisions towards performance</li>
               <li>Not easy to refactor, coupled by design</li>
               <li>It's <strong>very</strong> fast</li>
           </ul>
-          <div class="build right">
+          <div class="right">
               <a class="ref" href="https://github.com/memcached/memcached/blob/master/memcached.c#L311">
                   memcached.c:311
               </a>
@@ -1008,7 +1008,7 @@ bool conn_add_to_freelist(conn *c) {
 
  <article>
      <h3>Gocached Goals</h3>
-     <ul class="build">
+     <ul class="">
          <li>Compatible with memcached protocol</li>
          <li>Written in go</li>
          <li>The core should be <a href="https://github.com/warlockcc/gocached">readable</a> in one sitting</li>
@@ -1020,7 +1020,7 @@ bool conn_add_to_freelist(conn *c) {
 
  <article class="cols2 taller wider">
      <h3>Design - Phase 1 - Server scaffolding</h3>
-     <ul class="build">
+     <ul class="">
          <li>The server accepts connections on a tcp port</li>
          <li>typical tcp listen/accept flow</li>
          <li>When a client connects, establishes a session with the server</li>
@@ -1050,7 +1050,7 @@ if addr, err := net.ResolveTCPAddr("tcp", "0.0.0.0:"+*port); err != nil {
 
       <article class="cols2 wider">
           <h3>Design - Phase 1 - Server scaffolding</h3>
-          <ul class="left build">
+          <ul class="left">
               <li>Each api command has a different parameter signature/format
               </li>
               <li>Part of the command interface should be to parse itself</li>
@@ -1061,7 +1061,7 @@ if addr, err := net.ResolveTCPAddr("tcp", "0.0.0.0:"+*port); err != nil {
                   parsing
               </li>
           </ul>
-          <div class="right build">
+          <div class="right">
               <a target="_blank" class="ref"
                  href="https://github.com/rdarder/gocached/blob/master/command.go#L19">command.go:19</a>
 <pre class="prettyprint rafa lang-go">
@@ -1104,7 +1104,7 @@ type StorageCommand struct {
 
       <article class="cols2 wider taller">
       <h3>Design - Phase 2 - Storage API</h3>
-      <ul class="left build">
+      <ul class="left">
           <li>Parsing and command building example: get/gets</li>
           <a target="_blank" class="ref"
              href="https://github.com/rdarder/gocached/blob/master/command.go#L215">command.go:215</a>
@@ -1120,7 +1120,7 @@ func (self *RetrievalCommand) parse(line []string) bool {
 </pre>
 
       </ul>
-      <ul class="right build">
+      <ul class="right">
           <li>Basic Storage implementation, just use a map[string]</li>
           <a target="_blank" class="ref"
              href="https://github.com/rdarder/gocached/blob/master/mapcachestorage.go#L9">mapcachestorage.go:9</a>
@@ -1140,7 +1140,7 @@ type StorageEntry struct {
 
       </ul>
           <div style="clear: all">
-          <ul class="build">
+          <ul class="">
               <li>CacheStorage: core key-value storage</li>
               <a target="_blank" class="ref"
                  href="https://github.com/rdarder/gocached/blob/master/cachestorage.go#L22">cachestorage.go:22</a>
@@ -1164,7 +1164,7 @@ type CacheStorage interface {
 
       <article>
           <h3>Design - Phase 3 - Sync and Partitioning</h3>
-          <ul class="build">
+          <ul class="">
               <li>As there'll be many goroutines accessing this map directly, we need to sync, old school.</li>
               <a target="_blank" class="ref"
                  href="https://github.com/rdarder/gocached/blob/master/mapcachestorage.go#L32">mapcachestorage.go:32</a>
@@ -1189,15 +1189,15 @@ func (self *MapCacheStorage) Set(key string, flags uint32, exptime uint32, bytes
       </article>
       <article class="cols2 wider">
       <h3>Design - Phase 3 - Sync and Partitioning</h3>
-      <ul class="left build">
+      <ul class="left">
           <li>Maps can be easily partitioned, by its keys (a.k.a. sharding)</li>
           <li>HashingStorage composes a set (array) of map storages.</li>
       </ul>
-      <ul class="right build">
+      <ul class="right">
           <li>It's inmutable, so it doesn't need to be synchronized</li>
           <li>Just chooses the appropiate bucket and delegates to that CacheStorage</li>
       </ul>
-          <ul class="build">
+          <ul class="">
               <a target="_blank" class="ref"
                  href="https://github.com/rdarder/gocached/blob/master/hashingstorage.go#L59">hashingstorage.go:59</a>
 <pre class="prettyprint rafa lang-go">
@@ -1227,7 +1227,7 @@ func (self *HashingStorage) Add(key string, flags uint32, exptime uint32, bytes 
       </article>
       <article>
           <h3>Design - Phase 4 - Expiration</h3>
-          <ul class="build">
+          <ul class="">
               <li>Memcached supports expiration control</li>
               <li>Expiration is something that will happen in the future, but
                   won't get any notifications
@@ -1248,7 +1248,8 @@ func (self *HashingStorage) Add(key string, flags uint32, exptime uint32, bytes 
       </article>
       <article class="cols2 wider">
           <h3>Expiration: Generational entries</h3>
-          <ul class="left build">
+          <ul class="left">
+
               <ul>
                   <li>keep entries grouped by same expiry time slot</li>
                   <li>when a key is updated, possibly update the group</li>
@@ -1257,7 +1258,7 @@ func (self *HashingStorage) Add(key string, flags uint32, exptime uint32, bytes 
               <li>Bookkeeping is constant in time</li>
               <li>Generations can grow in time for non uniform expiring times</li>
           </ul>
-          <ul class="right build">
+          <ul class="right">
       <a target="_blank" class="ref"
          href="https://github.com/rdarder/gocached/blob/master/generationalstorage.go#L50">generationalstorage.go:50</a>
 <pre class="prettyprint rafa lang-go">
@@ -1294,14 +1295,14 @@ func (self *GenerationalStorage) removeGenerationToCollect(now int64) *Generatio
       </article>
       <article class="cols2 wider">
           <h3>Expiration: Time sorted bookkeeping</h3>
-          <ul class="left build">
+          <ul class="left">
               <li>Use a heap to maintain entries in order. Add() is O(log(n)) in time</li>
               <li>Periodically get the tip of the heap entries, possibly expiring map entries</li>
               <li>An update would be costly, as we loose reference from the key to the heap position</li>
               <li>Allow spurious heap entries (i.e, when exptime is changed). Memory leak</li>
 
           </ul>
-          <ul class="right build">
+          <ul class="right">
               <a target="_blank" class="ref"
                  href="https://github.com/rdarder/gocached/blob/master/expiry/heap.go#L8">heap.go:8</a>
 <pre class="prettyprint rafa lang-go">
@@ -1338,7 +1339,7 @@ func (hs *HeapExpiringStorage) ProcessUpdates() {
 
     <article>
         <h3>Design - Phase 5 - Plumbing</h3>
-        <ul class="build">
+        <ul class="">
             <li>How do we implement different expiration/bookkeeping
                 strategies?
             </li>
@@ -1359,7 +1360,7 @@ func (hs *HeapExpiringStorage) ProcessUpdates() {
     </article>
     <article>
         <h3>Design - Phase 5 - Plumbing</h3>
-        <ul class="build">
+        <ul class="">
                 <li>Solution 2: Let's have event notifications from the storage</li>
                 <li>just a decorator on a CacheStorage</li>
                 <a target="_blank" class="ref"
@@ -1427,7 +1428,7 @@ case "heap":
 
     <article>
         <h3>Conclusions</h3>
-        <ul class="build">
+        <ul class="">
             <li>Less than 1k SLOC</li>
             <li>Mostly memcached compliant</li>
             <li>Informal benchmarks: gocached runs 30% slower than
